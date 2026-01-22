@@ -2,7 +2,7 @@
 
 ## Overview
 This project documents the design and implementation of a secure homelab built in parallel with a production home network.  
-The goal is to enable safe experimentation with networking and security without impacting critical household services such as online banking, IPTV or IoT devices.
+The goal is to enable safe experimentation with networking and security without impacting critical household services such as online banking, etc or IoT devices.
 
 The project is created as a portfolio for upcoming LIA applications and entry-level roles within IT and IT security.
 
