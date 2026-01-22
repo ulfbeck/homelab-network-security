@@ -15,27 +15,28 @@ Two zones are separated using VLANs:
 
 ## Physical Topology (High-Level)
 
-[ TP-Link Home Router / Deco ]
-LAN: 192.168.0.1/24
-|
-| (VLAN 1 - Home)
-v
-[ Managed Switch ]
-| |
-| Port 3 (VLAN 1) | Port 4 (VLAN 10)
-v v
-[ rtr-pi (Router) ]
-eth0 (WAN/Home): 192.168.0.10
-eth1 (LAN/Lab): 192.168.10.1
-|
-| (VLAN 10 - Lab)
-v
-[ dns-pi (Pi-hole) ]
-192.168.10.2
-|
-v
-[ Lab Client (Port 6) ]
-DHCP from rtr-pi, DNS via dns-pi
+                 Internet
+                     |
+             [ TP-Link Router / Deco ]
+             LAN: 192.168.0.1/24
+                     |
+              VLAN 1 (Home)
+                     |
+              [ Managed Switch ]
+                 |           |
+        Port 3 (VLAN 1)   Port 4 (VLAN 10)
+                 |           |
+            eth0 (WAN)   eth1 (LAN)
+               [ rtr-pi ]
+             192.168.0.10
+             192.168.10.1
+                     |
+              VLAN 10 (Lab)
+                     |
+          -----------------------
+          |                     |
+     [ dns-pi ]           [ Lab Client ]
+   192.168.10.2         DHCP + DNS
 
 
 ---
