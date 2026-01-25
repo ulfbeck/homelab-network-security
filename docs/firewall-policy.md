@@ -35,7 +35,9 @@ Rules are ordered intentionally to ensure correct behavior.
 
 ### 1. Allow established and related connections
 
+```bash
 -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
 
 ### 2. Log blocked lab → home traffic
 
@@ -51,6 +53,42 @@ Rules are ordered intentionally to ensure correct behavior.
 
 ### INPUT Chain Rules (Router Protection)
 Allow SSH from home network
+
+-A INPUT -p tcp -s 192.168.0.0/24 --dport 22 -j ACCEPT
+
+Drop SSH from lab network
+
+-A INPUT -p tcp -s 192.168.10.0/24 --dport 22 -j DROP
+
+This prevents lab devices from accessing the router directly.
+
+### Logging and Verification
+
+Blocked traffic is logged to the kernel log and verified using:
+
+journalctl -k | grep "LABB->HEM BLOCK"
+
+This confirms that firewall rules are active and functioning as intended.
+
+### Persistence
+
+Firewall rules are made persistent across reboots using iptables-persistent.
+
+This ensures the security policy survives restarts and power outages.
+
+### Key Learning Outcomes
+
+Firewall rules are evaluated top-down
+
+Stateful filtering is critical for functionality
+
+Logging is essential for validation and troubleshooting
+
+Persistence is required for production-like stability
+
+
+
+
 
 
 
