@@ -93,6 +93,7 @@ From a lab client connected to VLAN 10 (192.168.10.0/24):
 ```bash
 ping 8.8.8.8
 nslookup google.com
+```
 
 This confirms:
 - NAT is working on rtr-pi
@@ -115,6 +116,7 @@ Logs are verified on rtr-pi using:
 
 ```bash
 journalctl -k | grep "LABB->HEM BLOCK"
+```
 
 Example log entries show:
 
