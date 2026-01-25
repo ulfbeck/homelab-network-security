@@ -33,7 +33,7 @@ The policy follows the principle of **least privilege** and is implemented using
 The FORWARD chain is evaluated **top to bottom**.  
 Rules are ordered intentionally to ensure correct behavior.
 
-Rule 1 - Allow established and related connections
+### Rule 1 - Allow established and related connections
 
 ```bash
 -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
