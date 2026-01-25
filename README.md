@@ -133,9 +133,6 @@ This confirms DNS isolation from the home network.
 
 Overall, testing confirms that the lab network is fully isolated from the home network while maintaining controlled internet access, DNS visibility, and security monitoring.
 
-
-
-
 ---
 
 ## Project Structure
@@ -156,6 +153,16 @@ This project demonstrates practical knowledge of:
 - Stateful firewall design and rule ordering
 - Logging and traffic visibility
 - Intrusion detection using Suricata
+
+---
+
+## Lessons Learned
+
+- DNS configuration affects critical services such as online banking 
+- DHCP-based DNS distribution must be carefully scoped per network
+- Firewall rule order is critical and evaluated top-down
+- Logging is essential to verify and troubleshoot security policies
+- Proper segmentation reduces blast radius during experimentation
 
 ---
 
