@@ -33,25 +33,26 @@ The policy follows the principle of **least privilege** and is implemented using
 The FORWARD chain is evaluated **top to bottom**.  
 Rules are ordered intentionally to ensure correct behavior.
 
-### 1. Allow established and related connections
+Rule 1 - Allow established and related connections
 
 ```bash
 -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 
-### 2. Log blocked lab → home traffic
+Rule 2 - Log blocked lab → home traffic
 
 -A FORWARD -s 192.168.10.0/24 -d 192.168.0.0/24 -j LOG --log-prefix "LABB->HEM BLOCK: "
 
-### 3. Drop lab → home traffic
+Rule 3 - Drop lab → home traffic
 
 -A FORWARD -s 192.168.10.0/24 -d 192.168.0.0/24 -j DROP
 
-### Allow lab → internet traffic (via WAN interface)
+Rule 4 - Allow lab → internet traffic (via WAN interface)
 
 -A FORWARD -s 192.168.10.0/24 -o eth0 -j ACCEPT
 
 ### INPUT Chain Rules (Router Protection)
+
 Allow SSH from home network
 
 -A INPUT -p tcp -s 192.168.0.0/24 --dport 22 -j ACCEPT
@@ -85,6 +86,8 @@ Stateful filtering is critical for functionality
 Logging is essential for validation and troubleshooting
 
 Persistence is required for production-like stability
+
+These rules were validated by actively attempting blocked connections from lab clients and verifying both traffic denial and log entries.
 
 
 
