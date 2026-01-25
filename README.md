@@ -39,6 +39,37 @@ The lab router distributes the DNS server via DHCP, while DNS services on the ro
 
 ---
 
+## DHCP Configuration
+
+### Design Decision
+
+DHCP is intentionally separated between networks:
+
+- Home network (VLAN 1) uses the TP-Link router for DHCP
+- Lab network (VLAN 10) uses rtr-pi as the DHCP server
+
+This prevents lab services from impacting production devices.
+
+### Lab Network DHCP (rtr-pi)
+
+The lab router (rtr-pi) runs `dnsmasq` to provide DHCP for VLAN 10.
+
+DHCP scope:
+- Network: `192.168.10.0/24`
+- Lease range: `192.168.10.50 – 192.168.10.150`
+
+DHCP options provided to lab clients:
+- Default gateway: `192.168.10.1`
+- DNS server: `192.168.10.2` (dns-pi / Pi-hole)
+- Domain: `labb.local`
+
+This ensures all lab clients:
+- Route traffic via rtr-pi
+- Use Pi-hole for DNS resolution
+- Require no manual configuration
+
+---
+
 ## Firewall and Security
 Stateful firewall rules are implemented on the lab router to control traffic between networks:
 
@@ -52,6 +83,58 @@ Stateful firewall rules are implemented on the lab router to control traffic bet
 ## Intrusion Detection
 A lightweight IDS using Suricata is deployed on the router to monitor lab traffic.  
 Suspicious activity such as scanning behavior is detected and logged, providing insight into potential misconfigurations or security issues.
+
+---
+
+## Testing & Validation
+### Lab client → Internet access
+From a lab client connected to VLAN 10 (192.168.10.0/24):
+
+```bash
+ping 8.8.8.8
+nslookup google.com
+
+This confirms:
+- NAT is working on rtr-pi
+- Internet access is allowed from lab network
+
+### Lab client → Home network isolation
+Attempts to reach the home network from the lab network are blocked:
+
+- `ping 192.168.0.1` fails
+- Traffic is dropped by FORWARD chain rules
+
+This confirms:
+- Lab network cannot access production home network
+- Firewall segmentation is enforced correctly
+
+### Firewall logging verification
+Blocked lab → home traffic is logged for visibility and troubleshooting.
+
+Logs are verified on rtr-pi using:
+
+```bash
+journalctl -k | grep "LABB->HEM BLOCK"
+
+Example log entries show:
+
+- Source IP from 192.168.10.0/24
+- Destination IP in 192.168.0.0/24
+- Traffic blocked as expected
+
+### DNS resolution validation (Pi-hole)
+DNS queries from lab clients are handled by Pi-hole:
+
+- Lab client receives DNS server `192.168.10.2`
+- Queries are visible in Pi-hole query log
+- Blocked domains are enforced only in lab network
+
+This confirms DNS isolation from the home network.
+
+Overall, testing confirms that the lab network is fully isolated from the home network while maintaining controlled internet access, DNS visibility, and security monitoring.
+
+
+
 
 ---
 
