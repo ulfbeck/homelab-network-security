@@ -107,13 +107,13 @@ This confirms:
 
 The lab client is able to reach the internet and resolve DNS via Pi-hole.
 
-![Internet access from lab network](screenshots/02-lab-internet-access.png)
+![Internet access from lab network](./screenshots/02-lab-internet-access.png)
 
 **Verification: Router and DNS IP addressing**
 
 The router (rtr-pi) and DNS server (dns-pi) have correct IP addresses in their respective networks.
 
-![Router and DNS IP addresses](screenshots/03-rtr-pi-and-dns-pi-ip-addresses.png)
+![Router and DNS IP addresses](./screenshots/03-rtr-pi-and-dns-pi-ip-addresses.png)
 
 ### Lab client → Home network isolation
 Attempts to reach the home network from the lab network are blocked:
@@ -129,7 +129,7 @@ This confirms:
 
 Traffic from the lab network to the production home network is blocked.
 
-![Home network isolation](screenshots/04-lab-home-isolation.png)
+![Home network isolation](./screenshots/04-lab-home-islolation.png)
 
 ### Firewall logging verification
 Blocked lab → home traffic is logged for visibility and troubleshooting.
@@ -150,13 +150,13 @@ Example log entries show:
 
 The FORWARD chain enforces network segmentation and allows only intended traffic flows.
 
-![Firewall FORWARD chain rules](screenshots/05-firewall-forward-chain.png)
+![Firewall FORWARD chain rules](./screenshots/05-firewall-forward-chain.png)
 
 **Verification: Firewall logging**
 
 Blocked traffic from the lab network to the home network is logged for visibility and troubleshooting.
 
-![Firewall logging](screenshots/06-firewall-logging.png)
+![Firewall logging](./screenshots/06-firewall-logging.png)
 
 ### DNS resolution validation (Pi-hole)
 DNS queries from lab clients are handled by Pi-hole:
@@ -173,13 +173,13 @@ Overall, testing confirms that the lab network is fully isolated from the home n
 
 Pi-hole is active and handling DNS queries from lab clients.
 
-![Pi-hole dashboard](screenshots/07-pi-hole-dashboard-lab.png)
+![Pi-hole dashboard](./screenshots/07-pi-hole-dashboard-lab.png)
 
 **Verification: Pi-hole query log**
 
 DNS queries from lab clients are visible in the Pi-hole query log.
 
-![Pi-hole query log](screenshots/08-pihole-query-log.png)
+![Pi-hole query log](./screenshots/08-pihole-query-log.png)
 
 ---
 
