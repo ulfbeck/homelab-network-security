@@ -218,3 +218,15 @@ This project demonstrates practical knowledge of:
 - Centralized log collection
 - Expanded IDS rule tuning
 - Additional monitoring and alerting
+
+## IDS & Attack Simulation
+
+This lab was extended with:
+
+- Suricata IDS for network monitoring
+- Kali Linux as attacker machine
+- Traffic analysis using flows and alerts
+
+Full technical documentation:
+
+[View IDS & Attack Simulation Lab](docs/ids-suricata.md)
