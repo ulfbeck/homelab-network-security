@@ -34,6 +34,13 @@ The goal is to understand how network traffic looks during normal behavior vs at
 - Segmented from home network
 - Traffic routed via rtr-pi
 
+**Security note:**
+
+This configuration shows that the VM is connected to VLAN 10 via vmbr0.  
+By isolating lab systems in a separate VLAN, attack traffic is contained within the lab network and must pass through the router (rtr-pi), where Suricata can inspect and log the traffic.
+
+This reduces the risk of lateral movement into the home network and improves visibility for detection.
+
 ---
 
 ## Suricata Setup
