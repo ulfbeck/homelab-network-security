@@ -28,7 +28,7 @@ The goal is to understand how network traffic looks during normal behavior vs at
 ### Network design
 ![Kali VLAN](../screenshots/14-proxmox-kali-network-vlan.png)
 
-![VM VLAN configuration](../screenshots/15-proxmox-vm-network-vlan.png)
+![VM VLAN configuration](../screenshots/15-proxmox-ubuntu-network-vlan.png)
 
 - Lab network: 192.168.10.0/24
 - Segmented from home network
