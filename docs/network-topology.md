@@ -1,6 +1,6 @@
 # Network Topology
 
-![Homelab Architecture](../screenshots/16-homelab-architecture-dark.png)
+![Network Topology – VLAN Segmentation](screenshots/17-network-topology-vlan-segmentation-dark.png)
 
 ## Goal
 Build a homelab that is isolated from the production home network to ensure critical services (e.g., online banking, IPTV) remain stable while enabling security and networking experiments.
