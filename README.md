@@ -1,6 +1,6 @@
 # Homelab – Network Segmentation, Firewall and IDS
 
-![Blue Team Homelab Architecture](screenshots/16-homelab-architecture-dark.png)
+![Network Topology – VLAN Segmentation](../screenshots/17-network-topology-vlan-segmentation-dark.png)
 
 ## Overview
 This project documents the design and implementation of a secure homelab built in parallel with a production home network.  
@@ -222,6 +222,8 @@ This project demonstrates practical knowledge of:
 - Additional monitoring and alerting
 
 ## IDS & Attack Simulation
+
+![IDS & Attack Simulation](screenshots/16-homelab-architecture-dark.png)
 
 This lab was extended with:
 
