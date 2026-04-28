@@ -1,6 +1,6 @@
 # Homelab – Network Segmentation, Firewall and IDS
 
-![Network Topology – VLAN Segmentation](../screenshots/17-network-topology-vlan-segmentation-dark.png)
+![Network Topology – VLAN Segmentation](screenshots/17-network-topology-vlan-segmentation-dark.png)
 
 ## Overview
 This project documents the design and implementation of a secure homelab built in parallel with a production home network.  
