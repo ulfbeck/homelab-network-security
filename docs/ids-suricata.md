@@ -1,5 +1,7 @@
 # Homelab – IDS & Attack Simulation
 
+![Blue Team Homelab Architecture](../screenshots/16-homelab-architecture-dark.png)
+
 ## Overview
 
 This lab extends the homelab with:
